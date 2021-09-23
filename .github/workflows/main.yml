@@ -1,0 +1,58 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+env:
+  APP_ID: ${{ secrets.APP_ID }}
+  API_HASH: ${{ secrets.API_HASH }}
+  BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+  FFMPEG: ${{ secrets.FFMPEG }}
+  OWNER: ${{ secrets.OWNER }}
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Setup
+        run: |
+          git config --global user.name ${{ secrets.GitHubName }}
+          git config --global user.email ${{ secrets.GitHubMail }}
+          git config --global credential.helper store
+          echo "https://${{ secrets.GitHubName }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          sudo apt update -y
+          sudo apt install -y git
+          sudo apt install -y mediainfo
+          sudo apt install -y wget
+          sudo apt install -y pv
+          sudo apt install -y ffmpeg
+          sudo apt install -y jq
+          pip3 install -r requirements.txt
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        continue-on-error: true
+        timeout-minutes: 355
+        run: |
+          python3 -m bot
+      - name: Loop workflow
+        continue-on-error: true
+        run: |
+            git clone https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} loop
+            cd loop || exit 1
+            echo $(date -u +%T%P) >> loop.txt
+            git add loop.txt
+            git commit -m "Workflow : Loop $(date -u +%D-%T%P)"
+            git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
