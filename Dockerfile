@@ -1,6 +1,3 @@
-# New release 
-# Support with libfdk_aac 
-
 FROM python:3.9.2-slim-buster
 RUN mkdir /bot && chmod 777 /bot
 WORKDIR /bot
