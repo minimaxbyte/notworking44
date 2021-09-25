@@ -125,7 +125,7 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", " Encoded By @OngoingAnimess.mkv")
+                bb = kk.replace(f".{aa}", "Encoded By @OngoingAnimess.mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
                 dtime = ts(int((es - s).seconds) * 1000)
@@ -134,8 +134,7 @@ async def something():
                 nn = await e.edit(
                     "`Encoding`",
                     buttons=[
-                        [Button.inline("Encoding Stats", data=f"stats{wah}")],
-                        [Button.inline("Cancel Current Process", data=f"skip{wah}")],
+                        [Button.inline("Current Encoding Stats", data=f"stats{wah}")],
                     ],
                 )
                 cmd = FFMPEG.format(dl, out)
