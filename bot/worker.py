@@ -52,7 +52,7 @@ async def encod(event):
             oc = event.fwd_from.from_id.user_id
             occ = (await event.client.get_me()).id
             if oc == occ:
-                return await event.reply("`This Video File is Already Encoded`")
+                return await event.reply("`😶This Video File is Already Encoded😶`")
         except BaseException:
             pass
         if WORKING or QUEUE:
@@ -60,14 +60,14 @@ async def encod(event):
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
-                return await xxx.edit("`This File Is Already In Queue`")
+                return await xxx.edit("`(⌐⊙_⊙)This File Is Already In Queue(⌐⊙_⊙)`")
             name = event.file.name
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
-            return await xxx.edit("`Added This File In Queue`")
+            return await xxx.edit("`✔️Added This File In Queue✔️`")
         WORKING.append(1)
-        xxx = await event.reply("`Downloading...`")
+        xxx = await event.reply("`⬇️Downloading⬇️`")
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"
@@ -89,7 +89,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "Downloading",
+                                "⬇️Downloading⬇️",
                             )
                         ),
                     )
@@ -98,7 +98,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "Downloading")
+                        progress(d, t, xxx, ttt, "⬇️Downloading⬇️")
                     ),
                 )
         except Exception as er:
@@ -146,7 +146,7 @@ async def encod(event):
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "uploading..")
+                    progress(d, t, nnn, ttt, "⬆️Uploading⬆️")
                 ),
             )
         ds = await e.client.send_file(
@@ -164,7 +164,7 @@ async def encod(event):
         a1 = await info(dl, e)
         a2 = await info(out, e)
         dk = await ds.reply(
-            f"Original Size : {hbs(org)}\nEncoded Size : {hbs(com)}\nEncoded Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nEncoded in {xx}\nUploaded in {xxx}\n\n🛡️Library:Telethon\n\nEncoded To 1080p x264",
+            f"Original Size : {hbs(org)}\nEncoded Size : {hbs(com)}\nEncoded Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nEncoded in {xx}\nUploaded in {xxx}\n\n🛡️Library:Telethon\n\n✅Encoded To 720p x265✅",
             link_preview=False,
         )
         os.remove(dl)
