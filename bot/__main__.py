@@ -101,7 +101,7 @@ async def something():
         try:
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
-                e = await bot.send_message(user, "Downloading File From Queue")
+                e = await bot.send_message(user, "⬇️Downloading Next File From Queue🗳️")
                 dl, file = QUEUE[list(QUEUE.keys())[0]]
                 s = dt.now()
                 tt = time.time()
@@ -117,7 +117,7 @@ async def something():
                                 t,
                                 e,
                                 tt,
-                                "Downloading",
+                                "⬇️Downloading⬇️",
                             )
                         ),
                     )
@@ -134,7 +134,7 @@ async def something():
                 nn = await e.edit(
                     "`Encoding`",
                     buttons=[
-                        [Button.inline("Current Encoding Stats", data=f"stats{wah}")],
+                        [Button.inline("█ ▆ ▄ ▁Current Encoding Stats▁ ▄ ▆ █", data=f"stats{wah}")],
                     ],
                 )
                 cmd = FFMPEG.format(dl, out)
@@ -155,14 +155,14 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
-                nnn = await e.client.send_message(e.chat_id, "`Uploading`")
+                nnn = await e.client.send_message(e.chat_id, "`⬆️Uploading⬆️`")
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, "uploading..")
+                            progress(d, t, nnn, ttt, "⬆️Uploading⬆️")
                         ),
                     )
                 ds = await e.client.send_file(
