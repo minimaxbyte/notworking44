@@ -25,7 +25,7 @@ async def stats(e):
         out, dl, id = wh.split(";")
         ot = hbs(int(Path(out).stat().st_size))
         ov = hbs(int(Path(dl).stat().st_size))
-        ans = f"Downloaded:\n{ov}\n\nCompressing:\n{ot}"
+        ans = f"Original File Size:{ov}\n\nCurrent Encoding File Size:{ot}"
         await e.answer(ans, cache_time=0, alert=True)
     except Exception as er:
         LOGS.info(er)
@@ -109,7 +109,7 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", " Encoded By @OngoingAnimess.mkv")
+        bb = kk.replace(f".{aa}", "Encoded By @OngoingAnimess.mkv")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
@@ -119,8 +119,7 @@ async def encod(event):
         nn = await e.edit(
             "`Encoding`",
             buttons=[
-                [Button.inline("Encoding Stats", data=f"stats{wah}")],
-                [Button.inline("Cancel Current Process", data=f"skip{wah}")],
+                [Button.inline("Current Encoding Stats", data=f"stats{wah}")],
             ],
         )
         cmd = FFMPEG.format(dl, out)
