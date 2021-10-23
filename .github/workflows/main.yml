@@ -33,12 +33,20 @@ jobs:
           git config --global user.email ${{ secrets.GitHubMail }}
           git config --global credential.helper store
           echo "https://${{ secrets.GitHubName }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+          sudo apt update -y
+          sudo apt install -y git
+          sudo apt install -y mediainfo
+          sudo apt install -y wget
+          sudo apt install -y pv
+          sudo apt install -y ffmpeg
+          sudo apt install -y jq
+          pip3 install -r requirements.txt
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         continue-on-error: true
         timeout-minutes: 355
         run: |
-          docker build -t notworking44 . && docker run notworking44
+          python3 main.py
       - name: Loop workflow
         continue-on-error: true
         run: |
