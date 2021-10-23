@@ -1,10 +1,5 @@
 {
-    "name": "Encoder Bot",
-    "description": "Encoder Bot",
-    "logo": "https://telegra.ph/file/aaee0031fbf0bd9df0352.png",
-    "keywords": ["Encoder Bot"],
-    "repository": "Encoder Bot",
-    "success_url": "Encoder Bot",
+    "name": "use",
     "stack": "container",
     "env": {
         "APP_ID": {
@@ -25,12 +20,12 @@
         },
         "THUMBNAIL": {
             "description": "Put Link of any picture.",
-            "value": "https://telegra.ph/file/aaee0031fbf0bd9df0352.png",
+            "value": "enter",
             "required": false
         },
         "FFMPEG": {
             "description": "Put your FFMPEG code.",
-            "value": "ffmpeg -i '''{}''' -preset ultrafast -c:v libx265 -crf 22 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? '''{}''' -y",
+            "value": "enter",
             "required": false
         }
     }
