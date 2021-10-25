@@ -127,14 +127,13 @@ async def something():
                 rr = "encode"
                 bb = kk.replace(f".{aa}", "Encoded By @OngoingAnimess.mkv")
                 out = f"{rr}/{bb}"
-                thum = "thumb.jpg"
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
                 nn = await e.edit(
                     "`Encoding`",
                     buttons=[
-                        [Button.inline("█ ▆ ▄ ▁Current Encoding Stats▁ ▄ ▆ █", data=f"stats{wah}")],
+                        [Button.inline("█ ▆Current Encoding Stats▆ █", data=f"stats{wah}")],
                     ],
                 )
                 cmd = FFMPEG.format(dl, out)
@@ -166,7 +165,7 @@ async def something():
                         ),
                     )
                 ds = await e.client.send_file(
-                    e.chat_id, file=ok, force_document=True, thumb=thum
+                    e.chat_id, file=ok, force_document=True
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)
