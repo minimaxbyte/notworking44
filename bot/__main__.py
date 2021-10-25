@@ -125,7 +125,7 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", "Encoded By @OngoingAnimess.mkv")
+                bb = kk.replace(f".{aa}", "Encode.mkv")
                 out = f"{rr}/{bb}"
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
