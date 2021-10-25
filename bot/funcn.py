@@ -21,14 +21,11 @@ QUEUE = {}
 OK = {}
 
 uptime = dt.now()
-os.system(f"wget {THUMB} -O thumb.jpg")
 
 if not os.path.isdir("downloads/"):
     os.mkdir("downloads/")
 if not os.path.isdir("encode/"):
     os.mkdir("encode/")
-if not os.path.isdir("thumb/"):
-    os.mkdir("thumb/")
 
 
 def stdr(seconds: int) -> str:
