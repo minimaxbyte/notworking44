@@ -109,9 +109,8 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", "Encoded By @OngoingAnimess.mkv")
+        bb = kk.replace(f".{aa}", "Encode.mkv")
         out = f"{rr}/{bb}"
-        thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
         e = xxx
         hehe = f"{out};{dl};0"
@@ -130,7 +129,7 @@ async def encod(event):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @OngoingAnimess")
+                await e.edit(str(er) + "\n\n**ERROR** Contact")
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -150,7 +149,7 @@ async def encod(event):
                 ),
             )
         ds = await e.client.send_file(
-            e.chat_id, file=ok, force_document=True, thumb=thum
+            e.chat_id, file=ok, force_document=True
         )
         await nnn.delete()
         org = int(Path(dl).stat().st_size)
